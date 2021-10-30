@@ -11,7 +11,7 @@
  * @return {number[]}
  */
 var maxSlidingWindow = function (nums, k) {
-  const n = nums.length, q = [];
+  const q = [];
   for (let i = 0; i < k; i++) {
     while (q.length && nums[i] >= nums[q[q.length - 1]]) {
       q.pop();
@@ -19,12 +19,11 @@ var maxSlidingWindow = function (nums, k) {
     q.push(i);
   }
   const ans = [nums[q[0]]]
-  for (let i = k; i < n; i++) {
+  for (let i = k; i < nums.length; i++) {
     while (q.length && nums[i] >= nums[q[q.length - 1]]) {
       q.pop()
     }
     q.push(i)
-    console.log(q);
     while (q[0] <= i - k) {
       q.shift()
     }

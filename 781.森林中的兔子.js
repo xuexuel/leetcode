@@ -17,7 +17,8 @@ var numRabbits = function (answers) {
   }
   for (const [ans, count] of map) {
     result += Math.ceil(count / (ans + 1)) * (ans + 1)
-  } return result;
+  }
+  return result;
 };
 // @lc code=end
 

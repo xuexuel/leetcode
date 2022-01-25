@@ -19,7 +19,10 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function(root, p, q) {
-    
+  if (root == null || root == p || root == q) return root;
+  const left = lowestCommonAncestor(root.left, p, q);
+  const right = lowestCommonAncestor(root.right, p, q);
+  return left == null ? right : right == null ? right : root;
 };
 // @lc code=end
 

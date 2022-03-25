@@ -18,16 +18,28 @@
  * @return {boolean}
  */
 
-// function isValid(root, lower, upper) {
-//   if (root === null) return true;
-//   if (root.val <= lower || root.val >= upper) return false;
-//   return isValid(root.left, lower, root.val) && isValid(root.right, root.val, upper);
+function isValid(root, lower, upper) {
+  if (root === null) return true;
+  if (root.val <= lower || root.val >= upper) return false;
+  return isValid(root.left, lower, root.val) && isValid(root.right, root.val, upper);
+}
+var isValidBST = function (root) {
+  return isValid(root, -Infinity, Infinity);
+};
+// let pre = null
+// var inorder = function (root) {
+//   if (root == null) return true;
+//   if (!inorder(root.left)) return false;
+//   if (pre != null && root.val <= pre.val) {
+//     return false;
+//   }
+//   pre = root;
+//   if (!inorder(root.right)) return false;
+//   return true;
+
 // }
 // var isValidBST = function (root) {
-//   return isValid(root, -Infinity, Infinity);
-// };
-function isValid(root, lower, upper) {
-
-}
+//   return inorder(root);
+// }
 // @lc code=end
 

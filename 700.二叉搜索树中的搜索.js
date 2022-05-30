@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=701 lang=javascript
+ * @lc app=leetcode.cn id=700 lang=javascript
  *
- * [701] 二叉搜索树中的插入操作
+ * [700] 二叉搜索树中的搜索
  */
 
 // @lc code=start
@@ -18,12 +18,12 @@
  * @param {number} val
  * @return {TreeNode}
  */
-var insertIntoBST = function(root, val) {
-  if (root == null) return new TreeNode(val);
+var searchBST = function(root, val) {
+  if (root == null) return null;
   if (root.val > val) {
-    root.left = insertIntoBST(root.left, val);
-  } else if(root.val < val){
-    root.right = insertIntoBST(root.right, val);
+    return searchBST(root.left, val);
+  } else if (root.val < val) {
+    return searchBST(root.right, val);
   }
   return root;
 };

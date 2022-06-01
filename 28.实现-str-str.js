@@ -29,5 +29,24 @@ var strStr = function (haystack, needle) {
   }
   return -1;
 };
+// var strStr = function (haystack, needle) {
+//   let ind = new Array(128).fill(-1);
+//   for (let i = 0; needle[i]; i++) {
+//     ind[needle[i]] = i;
+//   }
+//   let i = 0;
+//   while (i + needle.length <= haystack.length) {
+//     let flag = 1;
+//     for (let j = 0; needle[j]; j++) {
+//       if (haystack[i + j] != needle[j]) {
+//         flag = 0;
+//         break;
+//       }
+//     }
+//     if (flag) return i;
+//     i += (needle.length - ind[haystack[i + needle.length]]);
+//   }
+//   return -1;
+// }
 // @lc code=end
 

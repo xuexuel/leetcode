@@ -11,7 +11,7 @@
  */
 var solveNQueens = function (n) {
   const board = new Array(n);
-  for (let i = 0; i < n; i++) { // 棋盘的初始化
+  for (let i = 0; i < n; i++) {
     board[i] = new Array(n).fill('.');
   }
   const cols = new Set(); // 列集，记录出现过皇后的列

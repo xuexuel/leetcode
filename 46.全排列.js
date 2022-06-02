@@ -10,24 +10,22 @@
  * @return {number[][]}
  */
 var permute = function (nums) {
-  const res = [];
-  backtrack(nums, []);
-  return res;
-  function backtrack(nums, track) {
+  let res = [];
+  let backtrack = (nums, track) => {
     if (track.length === nums.length) {
       res.push(track);
       return;
     }
     for (let i = 0; i < nums.length; i++) {
-      if (track.includes(nums[i])) {
-        continue;
-      };
-      track.push(nums[i]);
-      const newTrack = [...track];
-      backtrack(nums, newTrack);
-      track.pop();
+      if (!track.includes(nums[i])) {
+        track.push(nums[i]);
+        backtrack(nums, [...track]);
+        track.pop();
+      }
     }
   }
+  backtrack(nums, []);
+  return res;
 };
 // @lc code=end
 

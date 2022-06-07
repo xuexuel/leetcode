@@ -27,8 +27,32 @@
 //   }
 //   return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
 // };
-var minDepth = function (root) {
 
+// BFS算法
+var minDepth = function (root) {
+  if (root == null) return 0;
+  let q = [];
+  q.push(root);
+  let depth = 1;
+  while (q.length != 0) {
+    let sz = q.length;
+    for (let i = 0; i < sz; i++) {
+      let cur = q.shift();
+      if (cur.left == null && cur.right == null) {
+        return depth;
+      } else {
+
+        if (cur.left != null) {
+          q.push(cur.left);
+        }
+        if (cur.right != null) {
+          q.push(cur.right);
+        }
+      }
+    }
+    depth++;
+  }
+  return depth;
 }
 // @lc code=end
 

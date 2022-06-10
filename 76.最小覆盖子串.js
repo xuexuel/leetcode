@@ -10,6 +10,35 @@
  * @param {string} t
  * @return {string}
  */
+// var minWindow = function (s, t) { 
+//   let cnt = 0, cnts = new Array(128).fill(0);
+//   for (const x of t) {
+//     cnts[x] -= 1;
+//     if (cnts[x] == -1) cnt += 1;
+//   }
+//   let ans_len = s.length+1, l = 0, r = 0;
+//   let ans = '';
+//   while (r <= s.length) {
+//     if (cnt) {
+//       if (r == s.length) break;
+//         cnts[s[r]] += 1;
+//         if (cnts[s[r]] == 0) cnt -= 1;
+//         r += 1;
+      
+//     } else {
+//       cnts[s[l]] -= 1;
+//       if (cnts[s[l]] == -1) cnt += 1;
+//       l += 1;
+//     }
+//     if (cnt == 0 && r - l < ans_len) {
+//       ans_len = r - l;
+//       ans = s.substring(l, r - l);
+//     }
+//   }
+//   return ans;
+// }
+
+// *滑动窗口
 var minWindow = function (s, t) {
   let need = {};
   let window = {};

@@ -10,45 +10,37 @@
  * @return {number}
  */
 var calculate = function (s) {
-  s = s.replaceAll('+0', '').replaceAll('-0', '').replaceAll(' ', '');
-  let l = 0, r = s.length - 1;
-  let ret = calc(s, l, r);
+  const ops = [1];
+  let sign = 1;
+  let ret = 0;
+  const n = s.length;
+  let i = 0;
+  while (i < n) {
+      if (s[i] === ' ') {
+          i++;
+      } else if (s[i] === '+') {
+          sign = ops[ops.length - 1];
+          i++;
+      } else if (s[i] === '-') {
+          sign = -ops[ops.length - 1];
+          i++;
+      } else if (s[i] === '(') {
+          ops.push(sign);
+          i++;
+      } else if (s[i] === ')') {
+          ops.pop();
+          i++;
+      } else {
+          let num = 0;
+          while (i < n && !(isNaN(Number(s[i]))) && s[i] !== ' ') {
+              num = num * 10 + s[i].charCodeAt() - '0'.charCodeAt();
+              i++;
+          }
+          ret += sign * num;
+      }
+  }
   return ret;
 }
-function calc(s, l, r) {
-  let op = -1, pri = 10000 - 1, cur_pri, temp = 0;
-  for (let i = l; i <= r; i++) {
-    cur_pri = 10000;
-    switch (s[i]) {
-      case '+':
-      case '-': cur_pri = 1 + temp; break;
-      case '*':
-      case '/': cur_pri = 2 + temp; break;
-      case '(': temp += 100; break;
-      case ')': temp -= 100; break;
-    }
-    if (cur_pri <= pri) {
-      pri = cur_pri;
-      op = i;
-    }
-  }
-  if (op === -1) {
-    let num = 0;
-    for (let i = l; i <= r; i++) {
-      if (s[i] < '0' || s[i] > '9') continue;
-      num = num * 10 + (s[i] - '0');
-    }
-    return num;
-  }
-  let a = calc(s, l, op - 1);
-  let b = calc(s, op + 1, r);
-  switch (s[op]) {
-    case '+': return a + b;
-    case '-': return a - b;
-    case '*': return a * b;
-    case '/': return a / b;
-  }
-  return 0;
-}
+
 // @lc code=end
 

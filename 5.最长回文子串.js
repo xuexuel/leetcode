@@ -29,17 +29,14 @@
 
 
 var longestPalindrome = function (s) {
-  if (s.length <= 0) {//边界条件
-    return s;
-  }
-  let start = 0;//最长回文子串开始的索引
-  let maxLength = 1;//初始化最大回文子串长度
-  function h(left, right) {
-    //当s[left]，和 s[right]想等时，不断向外扩展回文字符串的长度
+  if (s.length <= 0) return s;
+  let start = 0;
+  let maxLength = 1;
+  const h = (left, right) => {
     while (left >= 0 && right < s.length && s[left] === s[right]) {
       if (right - left + 1 > maxLength) {
-        maxLength = right - left + 1;//更新最大回文子串的长度
-        start = left;//更新start的位置
+        maxLength = right - left + 1;
+        start = left;
       }
       left--;
       right++;

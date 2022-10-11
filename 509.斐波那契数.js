@@ -21,7 +21,7 @@ var fib = function (n) {
   return dp_i_1;
 };
 
-// *递推   96%
+// *递推   85.6%
 // var fib = function (n) {
 //   let cache = [];
 //   for (let i = 0; i <= n; i++) {
@@ -31,7 +31,7 @@ var fib = function (n) {
 //   return cache[n];
 // };
 
-// *双指针  91%
+// *双指针  81%
 // var fib = function (n) {
 //   if (n < 2) return n;
 //   let p = 0, q = 0, res = 1;
@@ -41,6 +41,31 @@ var fib = function (n) {
 //     res = p + q;
 //   }
 //   return res;
+// };
+
+// *DP Table
+// var fib = function (n) {
+//   if (n == 0) return n;
+//   if (n == 1 || n == 2) return 1;
+//   let dp = new Array(n + 1).fill(0);
+//   dp[1] = dp[2] = 1;
+//   for (let i = 3; i <= n; i++){
+//     dp[i] = dp[i - 1] + dp[i - 2];
+//   }
+//   return dp[n];
+// };
+
+// *备忘录
+// var fib = function (n) {
+//   if (n == 0) return n;
+//   let memo = new Array(n + 1).fill(0);
+//   const helper = (memo, n) => {
+//     if (n == 1 || n == 0) return n;
+//     if (memo[n] != 0) return memo[n];
+//     memo[n] = helper(memo, n - 1) + helper(memo,n - 2);
+//     return memo[n];
+//   }
+//   return helper(memo,n);
 // };
 
 // *递归  41%

@@ -9,13 +9,24 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function (n) {
-  let f = [];
-  f[0] = f[1] = 1;
+// *优化空间
+ var climbStairs = function (n) {
+   let t1 = 1, t2 = 1;
   for (let i = 2; i <= n; i++) {
-    f[i] = f[i - 1] + f[i - 2];
+    let t = t1 + t2
+    t1 = t2
+    t2 = t
   }
-  return f[n];
+  return t2;
 };
+
+// var climbStairs = function (n) {
+//   let f = [];
+//   f[0] = f[1] = 1;
+//   for (let i = 2; i <= n; i++) {
+//     f[i] = f[i - 1] + f[i - 2];
+//   }
+//   return f[n];
+// };
 // @lc code=end
 

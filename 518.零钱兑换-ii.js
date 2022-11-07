@@ -13,11 +13,9 @@
 var change = function (amount, coins) {
   let dp = new Array(amount + 1).fill(0);
   dp[0] = 1;
-  for (const x of coins) {
-    for (let i = x; i <= amount; i++) {
-      if (i >= x && dp[i - x] != -1) {
-        dp[i] += dp[i - x];
-      }
+  for (const coin of coins) {
+    for (let i = coin; i <= amount; i++) {
+      dp[i] += dp[i - coin];
     }
   }
   return dp[amount];

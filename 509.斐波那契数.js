@@ -12,36 +12,12 @@
 // *递推优化，空间复杂度O(1)
 var fib = function (n) {
   if (n == 0 || n == 1) return n;
-  let dp_i_1 = 1, dp_i_2 = 0;
+  let dp1 = 1, dp2 = 0;
   for (let i = 2; i <= n; i++) {
-    let dp_i = dp_i_1 + dp_i_2;
-    dp_i_2 = dp_i_1;
-    dp_i_1 = dp_i;
+    [dp1, dp2] = [dp2 + dp1, dp1];
   }
-  return dp_i_1;
+  return dp1;
 };
-
-// *递推   85.6%
-// var fib = function (n) {
-//   let cache = [];
-//   for (let i = 0; i <= n; i++) {
-//     if (i === 1 || i === 0) cache[i] = i;
-//     else cache[i] = cache[i - 1] + cache[i - 2];
-//   }
-//   return cache[n];
-// };
-
-// *双指针  81%
-// var fib = function (n) {
-//   if (n < 2) return n;
-//   let p = 0, q = 0, res = 1;
-//   for (let i = 2; i <= n; i++) {
-//     p = q;
-//     q = res;
-//     res = p + q;
-//   }
-//   return res;
-// };
 
 // *DP Table
 // var fib = function (n) {

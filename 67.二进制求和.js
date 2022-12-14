@@ -11,7 +11,7 @@
  * @return {string}
  */
 var addBinary = function(a, b) {
-
+  
 };
 // @lc code=end
 

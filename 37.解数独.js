@@ -68,8 +68,6 @@ var solveSudoku = function (board) {
   function isValid(row, col, val) {
     for (let i = 0; i < 9; i++) {
       if (board[row][i] === val) return false;
-    }
-    for (let i = 0; i < 9; i++) {
       if (board[i][col] === val) return false;
     }
     let startRow = Math.floor(row / 3) * 3;

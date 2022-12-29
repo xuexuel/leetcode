@@ -16,6 +16,7 @@ var combine = function(n, k) {
       if (temp.length + (n - cur + 1) < k) {
           return;
       }
+      // 到达叶子节点才更新ans
       if (temp.length == k) {
           ans.push(temp);
           return;

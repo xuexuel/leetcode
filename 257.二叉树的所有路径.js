@@ -18,7 +18,21 @@
  * @return {string[]}
  */
 var binaryTreePaths = function(root) {
-
+  let arr = [];
+  const binaryTree = (root,path) => {
+    if (root) {
+      path += root.val.toString();
+      if (root.left === null && root.right === null) { // 当前节点是叶子节点
+          arr.push(path); // 把路径加入到答案中
+      } else {
+          path += "->"; // 当前节点不是叶子节点，继续递归遍历
+          binaryTree(root.left, path);
+          binaryTree(root.right, path);
+      }
+    }
+  }
+  binaryTree(root, '');
+  return arr;
 };
 // @lc code=end
 
